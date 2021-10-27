@@ -204,13 +204,20 @@ public class App extends Canvas implements Runnable {
                 tempAiPath[i] = -1;
             }
             boolean aiIsAlive = false;
+            boolean error = false;
             while (a != 100000) {
                 aiMoves = 0;
                 a++;
                 aiIsAlive = true;
-                b = rand.nextInt(10);
+                do {
+                    error = false;
+                    b = rand.nextInt(10);
+                    if (bombs[b] != -1)
+                        error = true;
+                } while (error);
                 aiMoves++;
                 tempAiPath[b] = b;
+
                 while (aiIsAlive) {
                     d++;
                     if (b < 90 && bombs[b + 10] == -1) {
@@ -278,7 +285,12 @@ public class App extends Canvas implements Runnable {
             if (e == 100) {
                 while (a != 100000) {
                     aiMoves = 0;
-                    b = rand.nextInt(10);
+                    do {
+                        error = false;
+                        b = rand.nextInt(10);
+                        if (bombs[b] != -1)
+                            error = true;
+                    } while (error);
                     tempAiPath[b] = 1;
                     aiMoves++;
                     aiIsAlive = true;
@@ -345,7 +357,7 @@ public class App extends Canvas implements Runnable {
                             }
                         }
                     }
-                    
+
                 }
             }
             out.println("Mode: Game Complete Rendering All");
