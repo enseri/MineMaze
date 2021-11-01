@@ -24,7 +24,7 @@ public class App extends Canvas implements Runnable {
             line++;
         }
         WIDTH = 50 * line;
-        HEIGHT = 50 * line;
+        HEIGHT = 54 * line;
         handler = new Handler();
         new Window(WIDTH, HEIGHT, "MineMaze", this);
         this.addMouseListener(mouse);
@@ -33,7 +33,7 @@ public class App extends Canvas implements Runnable {
         int d = 0;
         int g = 1;
         int h = 0;
-        while (d != (size + 1)) {
+        while (d != size) {
             handler.addObject(new Tile(0 + (f * 50), 0 + (h * 50), ID.Tile));
             handler.addObject(new Column(0 + (f * 50), 0 + (h * 50), ID.Column));
             handler.addObject(new Row(0 + (f * 50), 0 + (h * 50), ID.Row));
